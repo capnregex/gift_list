@@ -1,0 +1,2 @@
+class Wisher < ApplicationRecord
+end

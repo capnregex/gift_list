@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Wishers" %>
+
+<h1>Wishers</h1>
+
+<div id="wishers">
+  <% @wishers.each do |wisher| %>
+    <%= render wisher %>
+    <p>
+      <%= link_to "Show this wisher", wisher %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New wisher", new_wisher_path %>

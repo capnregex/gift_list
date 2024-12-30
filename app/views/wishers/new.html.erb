@@ -1,0 +1,11 @@
+<% content_for :title, "New wisher" %>
+
+<h1>New wisher</h1>
+
+<%= render "form", wisher: @wisher %>
+
+<br>
+
+<div>
+  <%= link_to "Back to wishers", wishers_path %>
+</div>
