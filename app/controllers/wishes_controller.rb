@@ -1,9 +1,10 @@
 class WishesController < ApplicationController
+  before_action :set_wisher, only: %i[ index new create ]
   before_action :set_wish, only: %i[ show edit update destroy ]
 
-  # GET /wishes or /wishes.json
+  # GET /wisher/:wisher_id/wishes or /wishes.json
   def index
-    @wishes = Wish.all
+    @wishes = @wisher.wishes
   end
 
   # GET /wishes/1 or /wishes/1.json
@@ -21,7 +22,7 @@ class WishesController < ApplicationController
 
   # POST /wishes or /wishes.json
   def create
-    @wish = Wish.new(wish_params)
+    @wish = Wish.new(wisher: @wisher, **wish_params)
 
     respond_to do |format|
       if @wish.save
@@ -59,12 +60,18 @@ class WishesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+   
+    def set_wisher
+      @wisher = Wisher.find(params.expect(:wisher_id))
+    end
+
     def set_wish
       @wish = Wish.find(params.expect(:id))
+      @wisher = @wish.wisher
     end
 
     # Only allow a list of trusted parameters through.
     def wish_params
-      params.expect(wish: [ :wisher_id, :title, :url, :body ])
+      params.expect(wish: [ :title, :url, :body ])
     end
 end

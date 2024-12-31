@@ -4,7 +4,7 @@
 
 <div>
   <%= link_to "Edit this wish", edit_wish_path(@wish) %> |
-  <%= link_to "Back to wishes", wishes_path %>
+  <%= link_to "Back to wishes", wisher_wishes_path(@wisher) %>
 
   <%= button_to "Destroy this wish", @wish, method: :delete %>
 </div>

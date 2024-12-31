@@ -2,6 +2,8 @@
 
 <%= render @wisher %>
 
+<%= link_to "Wishes", wisher_wishes_path(@wisher) %> |
+
 <div>
   <%= link_to "Edit this wisher", edit_wisher_path(@wisher) %> |
   <%= link_to "Back to wishers", wishers_path %>

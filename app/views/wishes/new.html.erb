@@ -2,10 +2,10 @@
 
 <h1>New wish</h1>
 
-<%= render "form", wish: @wish %>
+<%= render "form", wisher: @wisher, wish: @wish %>
 
 <br>
 
 <div>
-  <%= link_to "Back to wishes", wishes_path %>
+  <%= link_to "Back to wishes", wisher_wishes_path(@wisher) %>
 </div>

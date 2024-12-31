@@ -1,4 +1,4 @@
-<%= form_with(model: wish) do |form| %>
+<%= form_with(model: wish.new_record? ? [wisher, wish] : wish) do |form| %>
   <% if wish.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(wish.errors.count, "error") %> prohibited this wish from being saved:</h2>
@@ -10,11 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :wisher_id, style: "display: block" %>
-    <%= form.text_field :wisher_id %>
-  </div>
 
   <div>
     <%= form.label :title, style: "display: block" %>
