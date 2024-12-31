@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_30_192105) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_31_051946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,4 +20,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_30_192105) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_wishers_on_name"
   end
+
+  create_table "wishes", force: :cascade do |t|
+    t.bigint "wisher_id", null: false
+    t.string "title"
+    t.string "url"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_wishes_on_title"
+    t.index ["wisher_id"], name: "index_wishes_on_wisher_id"
+  end
+
+  add_foreign_key "wishes", "wishers"
 end
